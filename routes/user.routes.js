@@ -4,8 +4,8 @@ require('dotenv').config();
 
 const userRouter = Router();
 
-userRouter.post('/register', register);
+userRouter.post('/register', register);             // This route is used for user registration
 
-userRouter.post('/login', login);
+userRouter.post('/login', login);                   // This route is used for user login
 
 module.exports = userRouter;

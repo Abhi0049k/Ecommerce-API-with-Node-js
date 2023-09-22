@@ -16,13 +16,13 @@ app.get('/', (req, res)=>{
     res.status(200).json({msg: 'Welcome to E-commerce API with Node js'})
 })
 
-app.use('/users', userRouter);
+app.use('/users', userRouter);              // /users is used to handle user login and register
 
-app.use('/products', productRouter);
+app.use('/products', productRouter);        // /products is used to handle all products related functionality
 
-app.use('/orders', orderRouter);
+app.use('/orders', orderRouter);            // /orders is used to handle all order related functionality
 
-app.use('/*', (req, res)=>{
+app.use('/*', (req, res)=>{                 // This route is used when a user is hitting on a wrong endpoint
     res.status(404).send({msg: 'Page Not Found'});
 })
 

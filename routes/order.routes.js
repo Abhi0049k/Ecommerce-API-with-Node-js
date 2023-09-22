@@ -4,20 +4,22 @@ const { placeOrder, increaseQty, decreaseQty, confirmOrder, allOrders, orderDeta
 
 const orderRouter = Router();
 
-orderRouter.post('/placeOrder/:productId', userAuth(['admin', 'customer']), placeOrder)
+// all Order Routes are Protected
 
-orderRouter.delete('/removeProduct/:productId', userAuth(['admin', 'customer']), removeProduct)
+orderRouter.post('/placeOrder/:productId', userAuth(['admin', 'customer']), placeOrder);            // This route is used to add products in the cart
 
-orderRouter.patch('/increaseQty/:productId', userAuth(['admin', 'customer']), increaseQty)
+orderRouter.delete('/removeProduct/:productId', userAuth(['admin', 'customer']), removeProduct);    // This route is used to remove products based on product id
 
-orderRouter.patch('/decreaseQty/:productId', userAuth(['admin', 'customer']), decreaseQty)
+orderRouter.patch('/increaseQty/:productId', userAuth(['admin', 'customer']), increaseQty);         // This route is used to increase quantity of a product present in the cart
 
-orderRouter.delete('/removeOrder/:orderId', userAuth(['admin', 'customer']), deleteOrder)
+orderRouter.patch('/decreaseQty/:productId', userAuth(['admin', 'customer']), decreaseQty);         // This route is used to decrease quantity of a product present in the cart
 
-orderRouter.get('/confirmOrder', userAuth(['admin', 'customer']), confirmOrder)
+orderRouter.delete('/removeOrder/:orderId', userAuth(['admin', 'customer']), deleteOrder);          // This route is used to delete orders
 
-orderRouter.get('/all', userAuth(['admin', 'customer']), allOrders)
+orderRouter.get('/confirmOrder', userAuth(['admin', 'customer']), confirmOrder);                    // This route is used to confirm an order
 
-orderRouter.get('/:orderId', userAuth(['admin', 'customer']), orderDetails)
+orderRouter.get('/all', userAuth(['admin', 'customer']), allOrders)                                 // This route is used to fetch all the orders
+
+orderRouter.get('/:orderId', userAuth(['admin', 'customer']), orderDetails)                         // This route is used to fetch order Details based on order id
 
 module.exports = orderRouter
