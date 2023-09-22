@@ -100,7 +100,7 @@ const confirmOrder = async (req, res) => {
 const allOrders = async (req, res) => {
     try {
         const { user } = req.body;
-        const order = await orderModel.find({ userId: user._id }).populate('products.productId');
+        const order = await orderModel.find({ userId: user._id }).populate('products.productId').populate('userId');
         res.status(200).send(order);
     } catch (err) {
         res.status(500).send({ error: err.message })
@@ -110,7 +110,7 @@ const allOrders = async (req, res) => {
 const orderDetails = async (req, res) => {
     try {
         const { orderId } = req.params;
-        const order = await orderModel.findById(orderId).populate('products.productId');
+        const order = await orderModel.findById(orderId).populate('products.productId').populate('userId');
         res.status(200).send(order);
     } catch (err) {
         res.status(500).send({ error: err.message });
