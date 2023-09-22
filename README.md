@@ -15,6 +15,11 @@
 | `/orders/increaseQty/:productId`   | To Increase product quantity in the cart    | PATCH  | `{productId}` (URL param)                      | Success Message (JSON)   | 400, 500   |
 | `/orders/decreaseQty/:productId`   | To Decrease product quantity in the cart    | DELETE | `{productId}` (URL param)                      | Success Message (JSON)   | 400, 500   |
 | `/orders/removeOrder/:orderId`     | To Delete an order                          | DELETE | `{orderId}` (URL param)                        | Success Message (JSON)   | 400, 500   |
-| `/orders/confirmOrder/:orderId`    | To confirm an order                         | GET    | `{orderId}` (URL param)                        | Success Message (JSON)   | 400, 500   |
+| `/orders/confirmOrder`             | To confirm an order                         | GET    | None                        | Success Message (JSON)   | 400, 500   |
 | `/orders/all`                      | To fetch all the order                      | GET    | None                                           | Success Message (JSON)   | 400, 500   |
 | `/orders/:orderId`                 | To fetch details of an order                | GET    | `{orderId}` (URL param)                        | Success Message (JSON)   | 400, 500   |
+
+
+#### Admin Credentials: 
+email: `mangalamkumar2002@gmail.com`
+password: `123456789`

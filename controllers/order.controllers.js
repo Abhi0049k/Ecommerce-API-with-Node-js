@@ -24,9 +24,10 @@ const removeProduct = async (req, res) => {
         const { user } = req.body;
         const { productId } = req.params;
         const order = await orderModel.findOne({ userId: user._id, status: 'pending' });
+        const product = await productModel.findById(productId);
         if (!order) return res.status(400).send({ msg: 'No pending order found' });
         const newProductList = order.products.filter((el) => el.productId !== productId);
-        await orderModel.findByIdAndUpdate(order._id, { $set: { products: newProductList } });
+        await orderModel.findByIdAndUpdate(order._id, { $set: { products: newProductList, price: order.price - product.price} });
         res.status(500).send({ msg: 'Product Removed' });
     } catch (err) {
         res.status(500).send({ error: err.message });

@@ -6,7 +6,8 @@ const userModel = require("../models/user.model");
 const userAuth = (roles)=>{
     const adminAuth = async (req, res, next)=>{
         try{
-            let token = req.headers.authorization.split(' ')[1] || req.headers.authorization
+            let token = req.headers.authorization?.split(' ')[1] || req.headers.authorization
+            if(!token) return res.status(400).send({msg: 'Token Not Found'});
             let exists = await blackTokenModel.findOne({token});
             if(exists) return res.status(400).send({msg: 'Login Again'});
             let decode = verify(token, process.env.JWT_SECRET_KEY);
