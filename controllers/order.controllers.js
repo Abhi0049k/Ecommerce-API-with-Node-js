@@ -66,7 +66,7 @@ const decreaseQty = async (req, res) => {
                 productList.push(order.products[i]);
         }
         await orderModel.findByIdAndUpdate(order._id, { $set: { products: productList }, $set: { price: order.price - product.price } })
-        res.status(200).send({ msg: 'Quantity Increased' });
+        res.status(200).send({ msg: 'Quantity Decreased' });
     } catch (err) {
         res.status(500).send({ error: err.message });
     }
